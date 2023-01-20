@@ -1,7 +1,7 @@
-const addBookButton = document.querySelector('[data-open-modal');
-const closeAddBook = document.querySelector('[data-close-modal');
-const addToLibrary = document.querySelector('[data-add-to-library');
-const mainBody = document.querySelector('[data-main-body');
+const addBookButton = document.querySelector('[data-open-modal]');
+const closeAddBook = document.querySelector('[data-close-modal]');
+const addToLibrary = document.querySelector('[data-add-to-library]');
+const mainBody = document.querySelector('[data-main-body]');
 const modal = document.querySelector('[data-modal]');
 const overlay = document.getElementById('overlay');
 
@@ -13,11 +13,13 @@ let myLibrary = [frankenstein, twilight];
 displayLibrary();
 
 function Book(title, author, pages, release, read) {
+
     this.title = title,
     this.author = author,
     this.pages = pages,
     this.release = release,
     this.read = read
+
 }
 
 function addBookToLibrary(title, author, pages, release, read) {
@@ -67,15 +69,28 @@ function displayLibrary() {
         readStatus.classList.add('read-switch');
         newDiv.appendChild(readStatus)
 
+        book.read === 'yes' ? readStatus.checked = true : readStatus.checked = false; 
+
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.classList.add('remove-button');
-        newDiv.appendChild(removeButton)
+        newDiv.appendChild(removeButton);
+
+        readStatus.addEventListener('click', () => {
+
+            if (myLibrary[index].read === 'yes') {
+                myLibrary[index].read = 'no'
+            } else {
+                myLibrary[index].read = 'yes'
+            }
+
+        })
 
         removeButton.addEventListener('click', () => {
-            const cardToRemoveIndex = newDiv.dataset.indexNumber;
-            myLibrary.splice(cardToRemoveIndex, 1);
+
+            myLibrary.splice(index, 1);
             displayLibrary();
+
         })
 
     })
@@ -92,7 +107,7 @@ addToLibrary.addEventListener('submit', (event) => {
     const release = document.getElementById('release').value;
     let read = document.getElementById('read').checked;
 
-    (read === true) ? read = "yes" : read = "no";
+    read === true ? read = "yes" : read = "no";
 
     addBookToLibrary(title, author, pages, release, read);
 
@@ -105,13 +120,17 @@ addToLibrary.addEventListener('submit', (event) => {
 })
 
 addBookButton.addEventListener('click', () => {
+
     modal.classList.add('active');
     overlay.classList.add('active');
+
 })
 
 closeAddBook.addEventListener('click', () => {
+
     modal.classList.remove('active');
     overlay.classList.remove('active');
+    
 })
 
 
