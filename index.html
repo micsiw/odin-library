@@ -9,34 +9,32 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="overlay">
-
-        <h1>Library project</h1>
-        <button type="button" class="add-book">Add new book</button>
-        <div class="add-book-modal">
-            <div class="modal-header">
-                <div class="header-title"><h3>Add new book.</h3></div>
-                <button>&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="get">
-                    <label for="name">Book name:</label>
-                    <input type="text" id="name" name="name">
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
-                    <label for="pages">Pages:</label>
-                    <input type="number" min="0" max="10000" id="pages" name="pages">
-                    <label for="name">Book name:</label>
-                    <input type="text" id="name" name="name">
-                    <label for="release">Release year:</label>
-                    <input type="number" min="0" max="2023" id="release" name="release">
-                    <label for="read" class="switch">Have I read this book yet?</label>
-                    <input type="checkbox" id="read" name="read">
-                </form>
-            </div>
+    <h1>Library project</h1>
+    <button type="button" data-open-modal class="add-book">Add new book</button>
+    <div data-modal class="add-book-modal">
+        <div class="modal-header">
+            <div class="header-title"><h3>Add new book.</h3></div>
+            <button data-close-modal>&times;</button>
         </div>
-
-
+        <div class="modal-body">
+            <form action="" method="get" id="modal-form">
+                <label for="name">Book name:</label>
+                <input type="text" id="name" name="name">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Pages:</label>
+                <input type="number" min="0" max="10000" id="pages" name="pages">
+                <label for="name">Book name:</label>
+                <input type="text" id="name" name="name">
+                <label for="release">Release year:</label>
+                <input type="number" min="0" max="2023" id="release" name="release">
+                <label for="read" class="switch">Have I read this book yet?
+                <input type="checkbox" id="read" name="read"></label>
+            </form>
+            <button type="submit" form="modal-form">Add book</button>
+        </div>
     </div>
+    <div data-main-body class="main-body"></div>
+    <div id="overlay"></div>
 </body>
 </html>
