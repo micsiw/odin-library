@@ -42,6 +42,40 @@ html, body {
     border: 1px solid black;
 }
 
+input[type=checkbox] {
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    border: 1px solid black;
+    width: 34px;
+    height: 16px;
+    border-radius: 14px;
+    transition: background-color .3s;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type=checkbox]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    background-color: gray;
+    transition: left .3s;
+}
+
+input[type=checkbox]:checked {
+    background-color: greenyellow;
+}
+
+input[type=checkbox]:checked::after {
+    left: 75%;
+}
+
 #overlay {
     position: fixed;
     opacity: 0;

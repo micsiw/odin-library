@@ -20,7 +20,6 @@ function Book(title, author, pages, release, read) {
     this.read = read
 }
 
-
 function addBookToLibrary(title, author, pages, release, read) {
 
     myLibrary.push(new Book(title, author, pages, release, read))
@@ -63,9 +62,14 @@ function displayLibrary() {
         newRead.classList.add('card-read');
         newDiv.appendChild(newRead)
 
+        const readStatus = document.createElement('input');
+        readStatus.type = 'checkbox'
+        readStatus.classList.add('read-switch');
+        newDiv.appendChild(readStatus)
+
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        newRead.classList.add('remove-button');
+        removeButton.classList.add('remove-button');
         newDiv.appendChild(removeButton)
 
         removeButton.addEventListener('click', () => {
@@ -78,11 +82,6 @@ function displayLibrary() {
 
 }
 
-//?
-Book.prototype.didRead = () => {
-    this.read = 'yes';
-}
-
 addToLibrary.addEventListener('submit', (event) => {
 
     event.preventDefault();
@@ -91,7 +90,9 @@ addToLibrary.addEventListener('submit', (event) => {
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     const release = document.getElementById('release').value;
-    const read = document.getElementById('read').value;
+    let read = document.getElementById('read').checked;
+
+    (read === true) ? read = "yes" : read = "no";
 
     addBookToLibrary(title, author, pages, release, read);
 
@@ -100,6 +101,7 @@ addToLibrary.addEventListener('submit', (event) => {
 
     addToLibrary.reset();
     displayLibrary();
+
 })
 
 addBookButton.addEventListener('click', () => {
