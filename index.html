@@ -15,23 +15,23 @@
     </header>
     <div data-modal class="add-book-modal">
         <div class="modal-header">
-            <div class="header-title"><h3>Add new book.</h3></div>
+            <div class="header-title"><h3>Add new book</h3></div>
             <button data-close-modal>&times;</button>
         </div>
         <div class="modal-body">
             <form data-add-to-library action="" method="get" id="modal-form">
-                <label for="name">Book name:</label>
-                <input type="text" id="name" name="name">
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author">
-                <label for="pages">Pages:</label>
-                <input type="number" min="0" max="10000" id="pages" name="pages">
-                <label for="release">Release year:</label>
-                <input type="number" min="0" max="2023" id="release" name="release">
-                <label for="read" class="switch">Have I read this book yet?
+                <label for="name">Book name:
+                <input type="text" id="name" name="name" required></label>
+                <label for="author">Author:
+                <input type="text" id="author" name="author" required></label>
+                <label for="pages">Pages:
+                <input type="number" min="0" max="10000" id="pages" name="pages"></label>
+                <label for="release">Release year:
+                <input type="number" min="0" max="2023" id="release" name="release"></label>
+                <label for="read" class="switch"><p>Have I read this book yet?</p>
                 <input type="checkbox" class="read-switch" id="read" name="read"></label>
             </form>
-            <button type="submit" form="modal-form">Add book</button>
+            <button type="submit" class="form-submit-button" form="modal-form">Add book</button>
         </div>
     </div>
     <div data-main-body class="main-body"></div>
@@ -39,10 +39,7 @@
     <footer>
         <p data-stats-sum></p>
         <p data-stats-finished></p>
-        <p data-stats-unfinished></p>
-        <div class="footer-credits">
-            <p>created by Michal Siwanowicz</p>
-        </div>
+        <p data-stats-unfinished></p> 
     </footer>
 </body>
 </html>

@@ -8,8 +8,8 @@ const sumOfBooks = document.querySelector('[data-stats-sum]');
 const readBooks = document.querySelector('[data-stats-finished]');
 const unreadBooks = document.querySelector('[data-stats-unfinished]');
 
-const frankenstein = new Book('Frankenstein', 'Shelley', '269', '1818', 'yes');
-const twilight = new Book('Twilight', 'Meyer', '434', '2007', 'no')
+const frankenstein = new Book('Frankenstein', 'Mary Shelley', '269', '1818', 'yes');
+const twilight = new Book('Twilight', 'Stephenie Meyer', '434', '2007', 'no')
 
 let myLibrary = [frankenstein, twilight];
 
@@ -47,20 +47,41 @@ function displayLibrary() {
         newTitle.classList.add('card-title');
         newDiv.appendChild(newTitle);
 
-        const newAuthor = document.createElement('p');
-        newAuthor.textContent = 'Written by: ' + book.author;
+        const authorPara = document.createElement('p');
+        newDiv.appendChild(authorPara);
+
+        const newAuthorLabel = document.createElement('span');
+        const newAuthor = document.createElement('span');
+        newAuthorLabel.textContent = 'Written by: ';
+        newAuthor.textContent = book.author;
+        newAuthorLabel.classList.add('card-label');
         newAuthor.classList.add('card-author');
-        newDiv.appendChild(newAuthor);
+        authorPara.appendChild(newAuthorLabel);
+        authorPara.appendChild(newAuthor);
 
-        const newPages = document.createElement('p');
-        newPages.textContent = 'Number of pages: ' + book.pages;
+        const pagePara = document.createElement('p');
+        newDiv.appendChild(pagePara);
+
+        const newPagesLabel = document.createElement('span');
+        const newPages = document.createElement('span');
+        newPagesLabel.textContent = 'Number of pages: '
+        newPages.textContent = book.pages;
+        newPagesLabel.classList.add('card-label')
         newPages.classList.add('card-pages');
-        newDiv.appendChild(newPages);
+        pagePara.appendChild(newPagesLabel);
+        pagePara.appendChild(newPages);
 
-        const newRelease = document.createElement('p');
-        newRelease.textContent = 'Year of release: ' + book.release;
+        const releasePara = document.createElement('p');
+        newDiv.appendChild(releasePara);
+
+        const newReleaseLabel = document.createElement('span');
+        const newRelease = document.createElement('span');
+        newReleaseLabel.textContent = 'Year of release: '
+        newRelease.textContent = book.release;
+        newReleaseLabel.classList.add('card-label');
         newRelease.classList.add('card-release');
-        newDiv.appendChild(newRelease)
+        releasePara.appendChild(newReleaseLabel);
+        releasePara.appendChild(newRelease);
 
         const cardFooter = document.createElement('div');
         cardFooter.classList.add('card-footer');
