@@ -10,6 +10,18 @@ html, body {
     height: 100%;
 }
 
+header {
+    padding: 20px 40px;
+    text-align: center;
+    background-color: lightcyan;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
 .add-book-modal {
     position: fixed;
     top: 50%;
@@ -101,4 +113,23 @@ input[type=checkbox]:checked::after {
     height: 200px;
     width: 400px;
     border: 1px solid black;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    background-color: lightcyan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-credits {
+    position: fixed;
+    right: 5px;
+    bottom: 2px;
 }

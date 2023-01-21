@@ -9,8 +9,10 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Library project</h1>
-    <button type="button" data-open-modal class="add-book">Add new book</button>
+    <header>
+        <h1>Digital Library</h1>
+        <button type="button" data-open-modal class="add-book">Add new book</button>
+    </header>
     <div data-modal class="add-book-modal">
         <div class="modal-header">
             <div class="header-title"><h3>Add new book.</h3></div>
@@ -34,5 +36,13 @@
     </div>
     <div data-main-body class="main-body"></div>
     <div id="overlay"></div>
+    <footer>
+        <p data-stats-sum></p>
+        <p data-stats-finished></p>
+        <p data-stats-unfinished></p>
+        <div class="footer-credits">
+            <p>created by Michal Siwanowicz</p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -4,6 +4,9 @@ const addToLibrary = document.querySelector('[data-add-to-library]');
 const mainBody = document.querySelector('[data-main-body]');
 const modal = document.querySelector('[data-modal]');
 const overlay = document.getElementById('overlay');
+const sumOfBooks = document.querySelector('[data-stats-sum]');
+const readBooks = document.querySelector('[data-stats-finished]');
+const unreadBooks = document.querySelector('[data-stats-unfinished]');
 
 const frankenstein = new Book('Frankenstein', 'Shelley', '269', '1818', 'yes');
 const twilight = new Book('Twilight', 'Meyer', '434', '2007', 'no')
@@ -42,39 +45,43 @@ function displayLibrary() {
         const newTitle = document.createElement('p');
         newTitle.textContent = book.title;
         newTitle.classList.add('card-title');
-        newDiv.appendChild(newTitle)
+        newDiv.appendChild(newTitle);
 
         const newAuthor = document.createElement('p');
-        newAuthor.textContent = book.author;
+        newAuthor.textContent = 'Written by: ' + book.author;
         newAuthor.classList.add('card-author');
-        newDiv.appendChild(newAuthor)
+        newDiv.appendChild(newAuthor);
 
         const newPages = document.createElement('p');
-        newPages.textContent = book.pages;
+        newPages.textContent = 'Number of pages: ' + book.pages;
         newPages.classList.add('card-pages');
-        newDiv.appendChild(newPages)
+        newDiv.appendChild(newPages);
 
         const newRelease = document.createElement('p');
-        newRelease.textContent = book.release;
+        newRelease.textContent = 'Year of release: ' + book.release;
         newRelease.classList.add('card-release');
         newDiv.appendChild(newRelease)
+
+        const cardFooter = document.createElement('div');
+        cardFooter.classList.add('card-footer');
+        newDiv.appendChild(cardFooter);
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Discard';
+        removeButton.classList.add('remove-button');
+        cardFooter.appendChild(removeButton);
 
         const newRead = document.createElement('p');
         newRead.textContent = 'Have I read already?';
         newRead.classList.add('card-read');
-        newDiv.appendChild(newRead)
+        cardFooter.appendChild(newRead);
 
         const readStatus = document.createElement('input');
-        readStatus.type = 'checkbox'
+        readStatus.type = 'checkbox';
         readStatus.classList.add('read-switch');
-        newDiv.appendChild(readStatus)
+        newRead.appendChild(readStatus);
 
         book.read === 'yes' ? readStatus.checked = true : readStatus.checked = false; 
-
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove';
-        removeButton.classList.add('remove-button');
-        newDiv.appendChild(removeButton);
 
         readStatus.addEventListener('click', () => {
 
@@ -83,6 +90,8 @@ function displayLibrary() {
             } else {
                 myLibrary[index].read = 'yes'
             }
+
+            statsCalculation();
 
         })
 
@@ -95,6 +104,27 @@ function displayLibrary() {
 
     })
 
+    statsCalculation();
+
+}
+
+function statsCalculation() {
+
+    let readBooksSum = 0;
+    let unreadBooksSum = 0;
+
+    myLibrary.forEach((book) => {
+        if (book.read === 'yes') {
+            readBooksSum += 1
+        } else {
+            unreadBooksSum += 1
+        }
+    })
+
+    sumOfBooks.textContent = 'Books on shelves: ' + myLibrary.length;
+    readBooks.textContent = 'Finished books: ' + readBooksSum;
+    unreadBooks.textContent = 'Unfinished books: ' + unreadBooksSum;
+    
 }
 
 addToLibrary.addEventListener('submit', (event) => {
