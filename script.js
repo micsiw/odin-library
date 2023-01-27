@@ -8,22 +8,21 @@ const sumOfBooks = document.querySelector('[data-stats-sum]');
 const readBooks = document.querySelector('[data-stats-finished]');
 const unreadBooks = document.querySelector('[data-stats-unfinished]');
 
+class Book {
+    constructor(title, author, pages, release, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.release = release;
+        this.read = read;
+    }
+    
+}
+
 const frankenstein = new Book('Frankenstein', 'Mary Shelley', '269', '1818', 'yes');
 const twilight = new Book('Twilight', 'Stephenie Meyer', '434', '2007', 'no')
 
 let myLibrary = [frankenstein, twilight];
-
-displayLibrary();
-
-function Book(title, author, pages, release, read) {
-
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.release = release,
-    this.read = read
-
-}
 
 function addBookToLibrary(title, author, pages, release, read) {
 
@@ -183,5 +182,8 @@ closeAddBook.addEventListener('click', () => {
     overlay.classList.remove('active');
     
 })
+
+displayLibrary();
+
 
 
